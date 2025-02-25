@@ -1,0 +1,24 @@
+###
+
+POST http://localhost:3000/user/register
+Content-Type:application/json
+
+{
+    "name" : "ajay" , 
+    "email" : "ajay123@gmail.com",
+    "password" : "Ajay@123"
+}
+
+
+###
+
+POST http://localhost:3000/user/login 
+Content-Type:application/json 
+
+{
+    "name" : "vijay",
+    "password" : "Vijay@123"
+}
+
+
+
