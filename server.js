@@ -51,15 +51,16 @@ app.post('/user/register' , async (request , response) => {
                 VALUES ("${name}" , "${email}" , "${hashedPassword}");
             `
             const detailsResponse = await db.run(detailsUpload) 
-            response.send(`User ${name} created succesfully`)
+        
+            response.send({message : "Registered Successfully"})
 
         }
         else{
-            response.send('email already exits!!!')
+            response.send({message : "Email already exists"})
         }
     }
     else{
-        response.send("user already exists!!!")
+        response.send({message : 'User alreay exists'})
     }
 })
 
@@ -78,7 +79,7 @@ app.post('/user/login' , async (request , response) => {
     const checkNameResponse = await db.get(checkName)
 
     if (checkNameResponse === undefined){
-        response.send("user doesn't exist please sign in first")
+        response.send({message : "user doesn't exist please sign in first"})
     } 
     else{
         const {password} = allDataFetchResponse[0] 
@@ -88,7 +89,7 @@ app.post('/user/login' , async (request , response) => {
             response.send(jwtToken)
         }
         else{
-            response.send('Invalid Password')
+            response.send({message : 'Invalid Password'})
         }
 
     }
